@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Soil Fertility</title>
+    <style>
+      /* General styling */
+      body {
+          background-color: #5e0e0e;
+          color: white;
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+      }
+      
+      /* Centering container */
+      .container {
+          background-color: #3b0000;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          max-width: 400px;
+          width: 100%;
+      }
+      
+      /* Heading */
+      h2 {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      
+      /* Form grid layout */
+      form {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+      }
+      
+      /* Input styling */
+      input[type="text"] {
+          width: 100%;
+          padding: 8px;
+          border: none;
+          border-radius: 5px;
+          background-color: #2a0000;
+          color: white;
+      }
+      
+      /* Focus styling for inputs */
+      input[type="text"]:focus {
+          outline: none;
+          background-color: #4a0c0c;
+      }
+      
+      /* Button styling */
+      .btn-container {
+          grid-column: span 2;
+          display: flex;
+          justify-content: center;
+      }
+      
+      input[type="submit"] {
+          background-color: white;
+          color: black;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+      
+      input[type="submit"]:hover {
+          background-color: #ddd;
+      }
+
+      /* Navigation bar */
+      nav {
+          width: 100%;
+          padding: 15px 40px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: transparent;
+      }
+
+      nav .logo {
+          font-size: 2em;
+          font-weight: bold;
+          color: #ff6b6b;
+      }
+
+      nav ul {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      nav ul li a {
+          text-decoration: none;
+          color: white;
+          font-size: 1em;
+          padding: 5px 10px;
+      }
+
+      nav ul li a:hover {
+          border-bottom: 2px solid #ff6b6b;
+      }
+
+/* Updated footer styling */
+footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul li a:hover {
+    color: #ddd;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">FertilityXpert</div>
+        <ul>
+          <li><a href="ProjectHomepage.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    <div class="container">
+        <h2>Predict Soil Fertility</h2>
+        <form action="{{ url_for('ProjectHomepage') }}" method="POST">
+            <input type="text" name="input_1" placeholder="N (ppm)" required>
+            <input type="text" name="input_2" placeholder="P (ppm)" required>
+            <input type="text" name="input_3" placeholder="K (ppm)" required>
+            <input type="text" name="input_4" placeholder="pH (pH)" required>
+            <input type="text" name="input_5" placeholder="EC (pH)" required>
+            <input type="text" name="input_6" placeholder="OC (pH)" required>
+            <input type="text" name="input_7" placeholder="SO4 (ppm)" required>
+            <input type="text" name="input_8" placeholder="Zn (ppm)" required>
+            <input type="text" name="input_9" placeholder="Fe (ppm)" required>
+            <input type="text" name="input_10" placeholder="Cu (ppm)" required>
+            <input type="text" name="input_11" placeholder="Mn (meq/100g)" required>
+            <input type="text" name="input_12" placeholder="B (ppm)" required>
+            <div class="btn-container">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+    </div>
+
+    {% if prediction is not none %}
+<h2>Prediction Result: {{ prediction }}</h2>
+{% endif %}
+    <footer class="footer">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+        <p>&copy; 2024 FertilityXpert. All Rights Reserved.</p>
+      </footer>
+</body>
+</html>
